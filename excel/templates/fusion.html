@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Fusion de fichiers Excel</title>
+</head>
+
+<body>
+    <h2>Fusion de fichiers Excel</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Fusionner</button>
+        {% if fusion_result %}
+        <button type="submit" name="download">📥 Télécharger</button>
+        {% endif %}
+    </form>
+
+    {% if error %}
+    <p style="color:red">{{ error }}</p>
+    {% endif %}
+
+    {% if fusion_result %}
+    <h3>🔍 Aperçu du résultat :</h3>
+    <table border="1">
+        <tr>
+            {% for col in fusion_result.columns %}
+            <th>{{ col }}</th>
+            {% endfor %}
+        </tr>
+        {% for row in fusion_result.values %}
+        <tr>
+            {% for cell in row %}
+            <td>{{ cell }}</td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+</body>
+
+</html>
