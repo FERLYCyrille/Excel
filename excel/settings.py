@@ -26,6 +26,8 @@ SECRET_KEY = 'django-insecure-0l*h@(-de3_vo4t&@wpl3+sgyqeq*&rmpnf08opdrz8%_h(3^v
 DEBUG = False
 
 ALLOWED_HOSTS = ['excel-jso7.onrender.com']
+CSRF_TRUSTED_ORIGINS = ['https://excel-jso7.onrender.com']
+
 
 
 
